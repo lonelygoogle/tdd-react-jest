@@ -10,7 +10,11 @@ export default {
     get(url) {
         if (url === '/undolist.json') {
             return new Promise((resolve, reject) => {
-                resolve(mockUndoList)
+                if (this.success) {
+                    resolve(mockUndoList)
+                } else {
+                    reject(new Error())
+                }
             })
         }
     }

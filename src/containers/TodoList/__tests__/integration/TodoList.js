@@ -6,9 +6,10 @@ import Adapter from 'enzyme-adapter-react-16';
 Enzyme.configure({ adapter: new Adapter() });
 import { findTestWrapper } from '../../../../utils/testUtils'
 import store from '../../../../store/createStore'
+import axios from '../../__mocks__/axios'
 
 beforeEach(() => {
-    jest.useFakeTimers()
+    axios.success = true
 })
 // test(`
 //     1.header输入框输入内容
@@ -31,34 +32,40 @@ beforeEach(() => {
 //         expect(listItem.text()).toContain(content)
 // })
 
+// test(`
+//     1.用户打开界面，请求正常
+//     2.应该展示接口返回的数据
+//     `, (done) => {
+//         const wrapper = mount(
+//             <Provider store={store}><TodoList /></Provider>
+//         )
+
+//         // jest.runAllTimers()
+//         // expect(setTimeout).toHaveBeenCalledTimes(1)
+//         process.nextTick(() => {
+//             wrapper.update()
+//             console.log(wrapper.debug())
+//             const listItem = findTestWrapper(wrapper, 'list-item')
+//             expect(listItem.length).toEqual(1)
+//             done()
+//         })
+// })
+
 test(`
-    1.用户打开界面
-    2.5s之后
-    3.应该展示接口返回的数据
+    1.用户打开界面，请求不正常
+    2.页面无列表内容，但能把页面展示出来
     `, (done) => {
+        axios.success = false
         const wrapper = mount(
             <Provider store={store}><TodoList /></Provider>
         )
-
-        jest.runAllTimers()
-        // expect(setTimeout).toHaveBeenCalledTimes(1)
         process.nextTick(() => {
             wrapper.update()
             console.log(wrapper.debug())
+            console.log(1111111111111)
             const listItem = findTestWrapper(wrapper, 'list-item')
-            expect(listItem.length).toEqual(1)
+            expect(listItem.length).toEqual(0)
             done()
         })
-        // wrapper.update()
-        // console.log(wrapper.debug())
-        // const listItem = findTestWrapper(wrapper, 'list-item')
-        // expect(listItem.length).toEqual(1)
-
-        // setTimeout(() => {
-        //     wrapper.update()
-        //     console.log(wrapper.debug())
-        //     const listItem = findTestWrapper(wrapper, 'list-item')
-        //     expect(listItem.length).toEqual(1)
-        // }, 6000)
 })
 

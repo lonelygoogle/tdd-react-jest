@@ -65,17 +65,13 @@ class TodoList extends Component {
       }
 
     componentDidMount () {
-        setTimeout(() => {
             axios.get('/undolist.json').then((res) => {
                 this.setState({
                     undoList: res.data
                 })
             })
             .catch((e) => {
-                console.log(e)
             })
-        }, 5000)
-
     }  
     valueChange(index, value) {
         const newList = this.state.undoList.map((item, listIndex) => {
