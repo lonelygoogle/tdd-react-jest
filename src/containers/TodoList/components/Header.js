@@ -33,7 +33,7 @@ class Header extends Component {
                 <input
                 placeholder="Todo hi"
                 className="header-input"
-                data-test='input'
+                data-test='header-input'
                 value={value}
                 onChange={this.handleInputChange}
                 onKeyUp={this.handleInputKeyup}
