@@ -12,11 +12,11 @@ describe('TodoList组件', () => {
       expect(wrapper.state('undoList')).toEqual([])
     });
     
-    test('应该给header传递一个增加undoList的方法', () => {
-      const wrapper = shallow(<TodoList />)
-      const Header = wrapper.find('Header')
-      expect(Header.prop('addUndoItem')).toBeTruthy()
-    });
+    // test('应该给header传递一个增加undoList的方法', () => {
+    //   const wrapper = shallow(<TodoList />)
+    //   const Header = wrapper.find('Header')
+    //   expect(Header.prop('addUndoItem')).toBeTruthy()
+    // });
     
     test('当header回车时，undoList应该新增内容', () => {
         const wrapper = shallow(<TodoList />)
