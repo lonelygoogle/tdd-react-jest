@@ -67,7 +67,9 @@ describe('UndoList组件', () => {
         const wrapper = shallow(<UndoList deleteItem={fn} list={dataList}/>)
         const deleteItems = findTestWrapper(wrapper, "delete-item")
         const index = 1
-        deleteItems.at(index).simulate('click')
+        deleteItems.at(index).simulate('click', {
+            stopPropagation: () => {}
+        })
         expect(fn).toHaveBeenLastCalledWith(index)
     });
 

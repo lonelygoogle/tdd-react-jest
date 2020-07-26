@@ -77,7 +77,10 @@ describe('TodoList组件', () => {
         const data = [{
             status: 'input',
             value: '学习jest'
-        }]
+        },{
+            status: 'div',
+            value: '学习TDD'
+        },]
         const value = '学习TDD'
         wrapper.setState({
             undoList: data
